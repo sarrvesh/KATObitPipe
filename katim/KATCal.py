@@ -166,7 +166,7 @@ def KATInitContParms():
     parms["solSmo"]   =      0.0          # Smoothing interval for Amps (min)
 
     # Apply calibration and average?
-    parms["doCalAvg"] =      'BL'       # calibrate and average cont. calibrator data 
+    parms["doCalAvg"] =      'Splat'    # calibrate and average cont. calibrator data 
                                         # ('BL'- baseline bept, 'Splat'- Splat)
                                         # If BL, then FOV and maxInt are chosen from imaging
                                         # parameters.
