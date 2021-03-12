@@ -641,7 +641,21 @@ def MKContPipeline(files, outputdir, **kwargs):
 
     # KATUVFITS(uv, 'preimage.uvfits', 0, err, exclude=["AIPS HI", "AIPS SL", "AIPS PL"], 
     # include=["AIPS AN", "AIPS FQ"], compress=parms["Compress"], logfile=logFile)
-    KATUVFITab(uv, project+'.uvtab', 0, err)
+    #KATUVFITab(uv, project+'.uvtab', 0, err)
+    print('\n\nSARRVESH CODE')
+    print('\nHEADER OF UV CONTAINS')
+    uv.Header(err)
+    print('\nWrite calibrated data using fittp instead of KATUVFITab')
+    import AIPSLiteTask
+    fittp = AIPSLiteTask.AIPSTask("FITTP")
+    include = ["AIPS AN", "AIPS FQ", "AIPS SU"]
+    exclude = ["AIPS HI", "AIPS SL", "AIPS PL"]
+    fittp.userno = 100
+    setname(uv, fittp)
+    fittp.dataout = 'calibrated_data_fittp.uvfits'
+    fittp.g
+    print('\n\n')
+    
     #Gzip the data?
     if kwargs.get('gzip'):
         os.system('pigz -p %d %s'%(nThreads, project+'.uvtab'))
