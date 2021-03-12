@@ -646,7 +646,7 @@ def MKContPipeline(files, outputdir, **kwargs):
     print('\nHEADER OF UV CONTAINS')
     uv.Header(err)
     print('\nWrite calibrated data using fittp instead of KATUVFITab')
-    import AIPSLiteTask
+    from katim import AIPSLiteTask
     fittp = AIPSLiteTask.AIPSTask("FITTP")
     include = ["AIPS AN", "AIPS FQ", "AIPS SU"]
     exclude = ["AIPS HI", "AIPS SL", "AIPS PL"]
